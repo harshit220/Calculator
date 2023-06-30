@@ -1,81 +1,61 @@
 import React from 'react';
 import { useState } from 'react';
 
-const Calci = () => {
-    const [first , setFirst] = useState(null)
-    const [second , setSecond] = useState(null)
-    const [ans , setAns] = useState()
+function App() {
+  const [number1, setNumber1] = useState(0);
+  const [number2, setNumber2] = useState(0);
+  const [result, setResult] = useState(0);
 
-    const add = () => {
-       
-            const an = (first + "+" +second)
-            setAns(eval(an))
-            setFirst("")
-            setSecond("")
-        
-    }
+  const handleNumber1Change = (e) => {
+    setNumber1(Number(e.target.value));
+  };
 
-    const divide =() => {
-        const an = (first + "/" +second)
-        setAns(eval(an))
-        setFirst("")
-        setSecond("")
-    }
-    const multi=() => {
-        const an = (first + "*" +second)
-        setAns(eval(an))
-        setFirst("")
-        setSecond("")
+  const handleNumber2Change = (e) => {
+    setNumber2(Number(e.target.value));
+  };
 
-    }
-    const sub =() => {
-        const an = (first + "-" +second)
-        setAns(eval(an))
-        setFirst("")
-        setSecond("")
+  const handleAddition = () => {
+    setResult(number1 + number2);
+  };
 
-    }
-    const Delete = () => {
-        // setFirst("")
-        // setSecond("")
-        setAns("")
-    }
+  const handleSubtraction = () => {
+    setResult(number1 - number2);
+  };
+
+  const handleMultiplication = () => {
+    setResult(number1 * number2);
+  };
+
+  const handleDivision = () => {
+    setResult(number1 / number2);
+  };
 
   return (
     <div>
-        <h1 style={{color:"green",
-        fontSize:"50px"
-    }}>{ans}</h1>
-        <input placeholder='add first number'
-        value={first}
-        type='number'
-    onChange={(e)=>setFirst(e.target.value)}
-    style={{padding:"5px",
-    backgroundColor:"skyblue",
-    margin:"10px"
-
-}}
-    />
-    <input placeholder='add second number'
-    type='number'
-    value={second}
-    onChange={(e) => setSecond(e.target.value)}
-    style={{padding:"5px",
-    backgroundColor:"skyblue",
-    margin:"10px"
-
-}}
-    />
-   <div>
-    <button onClick={add} style={{padding:"10px",marginRight:"10px",backgroundColor:"black",color:"whitesmoke"}}>+</button>
-    <button onClick={sub} style={{padding:"10px",marginRight:"10px",backgroundColor:"black",color:"whitesmoke"}}>-</button>
-    <button onClick={multi} style={{padding:"10px",marginRight:"10px",backgroundColor:"black",color:"whitesmoke"}}>*</button>
-    <button onClick={divide} style={{padding:"10px",marginRight:"10px",backgroundColor:"black",color:"whitesmoke"}}>/</button>
-
-    <button onClick={Delete} style={{padding:"10px",marginRight:"10px",backgroundColor:"black",color:"whitesmoke"}}>delete</button>
+      <h1>Calculator</h1>
+      <input type="number" value={number1} onChange={handleNumber1Change} />
+      <input type="number" value={number2} onChange={handleNumber2Change} />
+      <br />
+      <button onClick={handleAddition}>Addition</button>
+      <button onClick={handleSubtraction}>Subtraction</button>
+      <button onClick={handleMultiplication}>Multiplication</button>
+      <button onClick={handleDivision}>Division</button>
+      <h2>Result: {result}</h2>
     </div>
-</div>
-  )
+  );
 }
 
-export default Calci;
+export default App;
+
+
+
+
+
+
+
+
+
+
+
+
+
